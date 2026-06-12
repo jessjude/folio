@@ -69,3 +69,20 @@ def run():
 
 if __name__ == "__main__":
     run()
+# Create the summary string
+summary_data = """
+PULSE - Daily Summary
+Friday, 12 June 2026
+
+WEATHER
+Thiruvananthapuram: 86°F
+
+TODAY'S QUOTE
+"Against the assault of laughter nothing can stand." - Mark Twain
+"""
+
+# Open a file in write mode and save it
+with open("daily_summary.txt", "w", encoding="utf-8") as file:
+    file.write(summary_data)
+
+print("Pulse ran successfully and file saved.")
