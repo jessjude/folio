@@ -1,8 +1,13 @@
+name: Pulse - Daily Summary Bot
+
+on:
+  workflow_dispatch:
+
 jobs:
-  run-pulse:                 # Job name (your choice)
-    runs-on: ubuntu-latest   # GitHub's free Linux server
+  run-pulse:
+    runs-on: ubuntu-latest  # Ensure this line is present right under your job name!
     steps:
-      - name: Checkout code
+      - name: Checkout repository code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -20,4 +25,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: daily-summary
-          path: daily-summary.txt
+          path: daily_summary.txt
+
+name: Run Pulse bot
+env:
+  WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}
+run: python bot.py
+

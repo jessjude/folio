@@ -86,3 +86,70 @@ with open("daily_summary.txt", "w", encoding="utf-8") as file:
     file.write(summary_data)
 
 print("Pulse ran successfully and file saved.")
+import os
+
+api_key = os.environ.get("WEATHER_API_KEY")
+# Add it on GitHub: Repo Settings -> Secrets and variables
+# -> Actions -> New repository secret -> name WEATHER_API_KEY
+
+import smtplib
+from email.mime.text import MIMEText
+import os
+
+def send_email(summary_text):
+    sender = os.environ.get("EMAIL_SENDER")
+    password = os.environ.get("EMAIL_PASSWORD") # Gmail App Password
+    receiver = os.environ.get("EMAIL_RECEIVER")
+    import smtplib
+from email.mime.text import MIMEText
+import os
+
+def send_email(summary_text):
+    sender = os.environ.get("EMAIL_SENDER")
+    password = os.environ.get("EMAIL_PASSWORD") # Gmail App Password
+    receiver = os.environ.get("EMAIL_RECEIVER")
+    
+    # 1. Create the email message
+    msg = MIMEText(summary_text)
+    msg['Subject'] = 'Your Daily Pulse Summary'
+    msg['From'] = sender
+    msg['To'] = receiver
+
+    try:
+        # 2. Connect to Gmail's SMTP server using SSL (Port 465)
+        # Alternatively, you can use port 587 with server.starttls()
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as server:
+            # 3. Log in using your credentials
+            server.login(sender, password)
+            
+            # 4. Send the email
+            server.sendmail(sender, receiver, msg.as_string())
+            
+        print("Email sent successfully!")
+        
+    except Exception as e:
+        print(f"Failed to send email. Error: {e}")
+import os
+
+api_key = os.environ.get("WEATHER_API_KEY")
+# Add it on GitHub: repo Settings -> Secrets and variables
+# -> Actions -> New repository secret -> name: WEATHER_API_KEY
+import smtplib
+from email.mime.text import MIMEText
+import os
+
+def send_email(summary_text):
+    sender = os.environ.get("EMAIL_SENDER")
+    password = os.environ.get("EMAIL_PASSWORD") # Gmail App Password
+    receiver = os.environ.get("EMAIL_RECEIVER")
+    
+    # (Remaining email sending logic would go here)
+    msg = MIMEText(summary_text)
+    msg["Subject"] = "Pulse - Daily Summary"
+    msg["From"] = sender
+    msg["To"] = receiver
+
+    with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
+        server.login(sender, password)
+        server.send_message(msg)
+    print("Email sent.")
