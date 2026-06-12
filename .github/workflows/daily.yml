@@ -1,13 +1,8 @@
-name: Pulse - Daily Summary Bot
-
-on:
-  workflow_dispatch:
-
 jobs:
-  run-pulse:
-    runs-on: ubuntu-latest  # Ensure this line is present right under your job name!
+  run-pulse:                 # Job name (your choice)
+    runs-on: ubuntu-latest   # GitHub's free Linux server
     steps:
-      - name: Checkout repository code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -25,4 +20,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: daily-summary
-          path: daily_summary.txt
+          path: daily-summary.txt

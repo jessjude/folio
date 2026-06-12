@@ -63,7 +63,7 @@ def run():
     print(summary)
     
     # Save a copy to a local file
-    with open("summary.txt", "w", encoding="utf-8") as f:
+    with open("daily_summary.txt", "w", encoding="utf-8") as f:
         f.write(summary)
         print("Pulse ran successfully.")
 
