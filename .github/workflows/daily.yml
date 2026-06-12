@@ -1,16 +1,13 @@
 name: Pulse - Daily Summary Bot
 
 on:
-  schedule:
-    - cron: '30 2 * * *'
   workflow_dispatch:
 
 jobs:
   run-pulse:
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest  # Ensure this line is present right under your job name!
     steps:
-      - name: Checkout code
+      - name: Checkout repository code
         uses: actions/checkout@v4
 
       - name: Set up Python
