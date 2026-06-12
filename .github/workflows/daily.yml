@@ -1,0 +1,19 @@
+# Rule 1: Give your automation a clear name
+name: Pulse Robot Workflow
+
+# Rule 2: Set the schedule (Runs every day at 8:00 AM IST / 2:30 AM UTC)
+on:
+  schedule:
+    - cron: '30 2 * * *'
+
+# Rule 3: Define what the robot actually does
+jobs:
+  run-pulse:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository code
+        uses: actions/checkout@v4
+
+      - name: Run the Pulse script
+        run: echo "Pulse robot is running..."
