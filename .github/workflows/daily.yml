@@ -1,6 +1,14 @@
+name: Pulse - Daily Summary Bot
+
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+
 jobs:
-  run-pulse:                 # Job name (your choice)
-    runs-on: ubuntu-latest   # GitHub's free Linux server
+  run-pulse:
+    runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,4 +28,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: daily-summary
-          path: daily-summary.txt
+          path: daily_summary.txt
